@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="4.9.3 -mcpu=cortex-m4 -mthumb -g2 -Map=Test01.map -O0 --gc-sections -LC:/Users/Asus/Desktop/CoIDE/workspace/BlinkingWithButton -TC:/Users/Asus/Desktop/CoIDE/workspace/BlinkingWithButton/stm32f407vg_flash.ld -g">
+      <target file="Test01.elf" lastModified="14df2f5731b">
+         <source file="..\obj\ButtonSM.o" lastModified="14df2f0539b"/>
+         <source file="..\obj\syscalls.o" lastModified="14df2f56e58"/>
+         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="14df2ec6abb"/>
+         <source file="..\obj\Button.o" lastModified="14df2ec7624"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="14df2ec6fa3"/>
+         <source file="..\obj\stm32f4xx_hal.o" lastModified="14df2ec61f3"/>
+         <source file="..\obj\Time.o" lastModified="14df2f05193"/>
+         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="14df2ec73af"/>
+         <source file="..\obj\LedSM.o" lastModified="14df2f04efd"/>
+         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="14df2ec66b5"/>
+         <source file="..\obj\startup_stm32f429xx.o" lastModified="14df2ec578b"/>
+         <source file="..\obj\Message.o" lastModified="14df2ec53ed"/>
+         <source file="..\obj\main.o" lastModified="14df2eca4b5"/>
+      </target>
+   </processor>
+</history>
