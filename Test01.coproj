@@ -73,7 +73,6 @@
     <File name="Button.h" path="app/Button.h" type="1"/>
     <File name="Hardware" path="" type="2"/>
     <File name="Time.h" path="app/Time.h" type="1"/>
-    <File name="Hardware/stm32f4xx_hal.h" path="../stm32cubef4/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" type="1"/>
     <File name="Message.h" path="app/Message.h" type="1"/>
     <File name="ButtonSM.c" path="app/ButtonSM.c" type="1"/>
     <File name="State.h" path="app/State.h" type="1"/>
@@ -83,7 +82,6 @@
     <File name="Button.c" path="app/Button.c" type="1"/>
     <File name="system_stm32f4xx.c" path="app/system_stm32f4xx.c" type="1"/>
     <File name="Hardware/stm32f4xx_hal_rcc.h" path="../stm32cubef4/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h" type="1"/>
-    <File name="Hardware/stm32f4xx_hal.c" path="../stm32cubef4/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" type="1"/>
     <File name="Time.c" path="app/Time.c" type="1"/>
     <File name="stm32f4xx_hal_conf.h" path="app/stm32f4xx_hal_conf.h" type="1"/>
     <File name="ButtonSM.h" path="app/ButtonSM.h" type="1"/>

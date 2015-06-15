@@ -1,6 +1,7 @@
-#ifndef TaskControlBlock_H
-#define TaskControlBlock_H
+#ifndef Task_H
+#define Task_H
 
+#include <stdint.h>
 #include "State.h"
 
 typedef struct
@@ -9,4 +10,4 @@ typedef struct
     uint32_t stack;
 } Tcb;
 
-#endif // TaskControlBlock_H
+#endif // Task_H

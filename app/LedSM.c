@@ -7,12 +7,11 @@
 void ledInitData(LedData *data)
 {
     data->state = LED_OFF;
+    data->time = 0;
 }
 
 void ledSM(LedData *data)
 {
-    static uint32_t previousTime;
-    
     switch(data->state)
     {
         case LED_OFF:
@@ -40,7 +39,7 @@ void ledSM(LedData *data)
             }
             else
             {
-                if(isTimerExpire(FIVE_HUND_MILISEC, &previousTime))
+                if(isTimerExpire(FIVE_HUND_MILISEC, &data->time))
                     data->state = LED_BLINKING_OFF;
             }
             break;
@@ -53,12 +52,14 @@ void ledSM(LedData *data)
             }
             else
             {
-                if(isTimerExpire(FIVE_HUND_MILISEC, &previousTime))
+                if(isTimerExpire(FIVE_HUND_MILISEC, &data->time))
                     data->state = LED_BLINKING_ON;
             }
             break;
         default :
+			#ifdef TEST
             printf("Error: Unknown state encounter in LedSM: %d\n", data->state);
+			#endif
             break;
     }
 }

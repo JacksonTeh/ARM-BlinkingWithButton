@@ -24,7 +24,9 @@ void buttonSM(ButtonData *data)
                 data->state = RELEASE;
             break;
         default :
+			#ifdef TEST
             printf("Error: Unknown state encounter in buttonSM: %d\n", data->state);
+			#endif
             break;
     }
 }

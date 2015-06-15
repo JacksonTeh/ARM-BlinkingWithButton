@@ -22,11 +22,11 @@ void test_message_passing_given_DO_NOTHING_and_LED_OFF_ledState_should_remain_LE
     ledInitData(&ledData);
     buttonInitData(&buttonData);
 
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
 
     buttonSM(&buttonData);
 
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
 
@@ -42,11 +42,11 @@ void test_message_passing_given_DO_NOTHING_and_LED_ON_ledState_should_remain_LED
     ledData.state = LED_ON;
     buttonInitData(&buttonData);
 
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
 
     buttonSM(&buttonData);
 
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
 
@@ -63,29 +63,29 @@ void test_message_passing_for_intergrated_test(void)
     buttonInitData(&buttonData);
 
     //off to blink
-    isButtonPressed_ExpectAndReturn(1);
+    readUserButton_ExpectAndReturn(1);
     buttonSM(&buttonData);
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
     ledSM(&ledData);
 
     TEST_ASSERT_EQUAL(buttonData.state, PRESS);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_ON);
 
     //blinking on to blinking off
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
     buttonSM(&buttonData);
-    turnOnLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 1);
+    turnOnLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 1);
     ledSM(&ledData);
 
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_OFF);
     
     //blinking off to blinking on
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
     buttonSM(&buttonData);
-    turnOffLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 1);
+    turnOffLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 1);
     ledSM(&ledData);
 
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
@@ -93,22 +93,22 @@ void test_message_passing_for_intergrated_test(void)
     
     //blinking off to on
     ledData.state = LED_BLINKING_OFF;
-    isButtonPressed_ExpectAndReturn(1);
+    readUserButton_ExpectAndReturn(1);
     buttonSM(&buttonData);
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
     ledSM(&ledData);
 
     TEST_ASSERT_EQUAL(buttonData.state, PRESS);
     TEST_ASSERT_EQUAL(ledData.state, LED_ON);
     
     //on to off
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
     buttonSM(&buttonData);
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
     ledSM(&ledData);
-    isButtonPressed_ExpectAndReturn(1);
+    readUserButton_ExpectAndReturn(1);
     buttonSM(&buttonData);
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
     ledSM(&ledData);
 
     TEST_ASSERT_EQUAL(buttonData.state, PRESS);

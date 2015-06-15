@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "unity.h"
 #include "LedSM.h"
 #include "Message.h"
@@ -28,7 +29,7 @@ void test_ledSM_given_LED_OFF_state_should_remain_LED_OFF_state_if_msg_is_DO_NOT
     TEST_ASSERT_EQUAL(ledData.state, LED_OFF);
 
     msg = DO_NOTHING;
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_OFF);
 }
@@ -42,7 +43,7 @@ void test_ledSM_given_LED_OFF_state_should_change_to_LED_BLINKING_ON_state_if_ms
 
     msg = CHANGE_MODE;
 
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_ON);
@@ -56,7 +57,7 @@ void test_ledSM_given_LED_ON_state_should_remain_LED_ON_state_if_msg_is_DO_NOTHI
     ledData.state = LED_ON;
     msg = DO_NOTHING;
 
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_ON);
@@ -70,7 +71,7 @@ void test_ledSM_given_LED_ON_state_should_change_to_LED_OFF_state_if_msg_is_CHAN
     ledData.state = LED_ON;
     msg = CHANGE_MODE;
 
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_OFF);
@@ -82,10 +83,11 @@ void test_ledSM_given_LED_BLINKING_ON_state_should_remain_LED_BLINKING_ON_state_
 	LedData ledData;
 
     ledData.state = LED_BLINKING_ON;
+    ledData.time = 0;
     msg = DO_NOTHING;
 
-    turnOnLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 0);
+    turnOnLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 0);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_ON);
@@ -99,7 +101,7 @@ void test_ledSM_given_LED_BLINKING_ON_state_should_change_to_LED_ON_state_if_msg
     ledData.state = LED_BLINKING_ON;
     msg = CHANGE_MODE;
 
-    turnOnLED_Expect();
+    turnOnLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_ON);
@@ -111,10 +113,11 @@ void test_ledSM_given_LED_BLINKING_ON_state_should_change_to_LED_BLINKING_OFF_st
 	LedData ledData;
 
     ledData.state = LED_BLINKING_ON;
+    ledData.time = 0;
     msg = DO_NOTHING;
 
-    turnOnLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 1);
+    turnOnLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 1);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_OFF);
@@ -126,10 +129,11 @@ void test_ledSM_given_LED_BLINKING_OFF_state_should_remain_LED_BLINKING_OFF_stat
 	LedData ledData;
 
     ledData.state = LED_BLINKING_OFF;
+    ledData.time = 0;
     msg = DO_NOTHING;
 
-    turnOffLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 0);
+    turnOffLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 0);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_OFF);
@@ -143,7 +147,7 @@ void test_ledSM_given_LED_BLINKING_OFF_state_should_change_to_LED_ON_state_if_ms
     ledData.state = LED_BLINKING_OFF;
     msg = CHANGE_MODE;
 
-    turnOffLED_Expect();
+    turnOffLED_Expect(PORTG, LED3);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_ON);
@@ -155,10 +159,11 @@ void test_ledSM_given_LED_BLINKING_OFF_state_should_change_to_LED_BLINKING_ON_st
 	LedData ledData;
 
     ledData.state = LED_BLINKING_OFF;
+    ledData.time = 0;
     msg = DO_NOTHING;
 
-    turnOffLED_Expect();
-    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, 0, 1);
+    turnOffLED_Expect(PORTG, LED3);
+    isTimerExpire_ExpectAndReturn(FIVE_HUND_MILISEC, &ledData.time, 1);
 
     ledSM(&ledData);
     TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_ON);

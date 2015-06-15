@@ -1,1 +1,18 @@
-<history/>
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g2 -Map=Test01.map -O0 --gc-sections -LC:/Users/D203C-01/CoIDE/workspace/ARM-BlinkingWithButton -TC:/Users/D203C-01/CoIDE/workspace/ARM-BlinkingWithButton/stm32f407vg_flash.ld -g">
+      <target file="Test01.elf" lastModified="14df62bc7f1">
+         <source file="..\obj\ButtonSM.o" lastModified="14df62bc40a"/>
+         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="14df62bc38e"/>
+         <source file="..\obj\Button.o" lastModified="14df62bc5b0"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="14df62bc478"/>
+         <source file="..\obj\Time.o" lastModified="14df62bc1d9"/>
+         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="14df62bc533"/>
+         <source file="..\obj\LedSM.o" lastModified="14df62bc11e"/>
+         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="14df62bc2c3"/>
+         <source file="..\obj\startup_stm32f429xx.o" lastModified="14df62bc072"/>
+         <source file="..\obj\Message.o" lastModified="14df62bbf98"/>
+         <source file="..\obj\main.o" lastModified="14df62bc053"/>
+      </target>
+   </processor>
+</history>

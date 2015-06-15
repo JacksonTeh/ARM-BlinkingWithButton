@@ -26,7 +26,7 @@ void test_buttonSM_given_RELEASE_state_should_remain_RELEASE_state_if_button_not
     buttonInitData(&buttonData);
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
 
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
     buttonSM(&buttonData);
 
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
@@ -39,7 +39,7 @@ void test_buttonSM_given_RELEASE_state_should_change_to_PRESS_state_if_button_pr
     buttonInitData(&buttonData);
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
 
-    isButtonPressed_ExpectAndReturn(1);
+    readUserButton_ExpectAndReturn(1);
     buttonSM(&buttonData);
 
     TEST_ASSERT_EQUAL(buttonData.state, PRESS);
@@ -51,7 +51,7 @@ void test_buttonSM_given_PRESS_state_should_remain_to_PRESS_state_if_button_is_p
 
     buttonData.state = PRESS;
 
-    isButtonPressed_ExpectAndReturn(1);
+    readUserButton_ExpectAndReturn(1);
     buttonSM(&buttonData);
 
     TEST_ASSERT_EQUAL(buttonData.state, PRESS);
@@ -63,7 +63,7 @@ void test_buttonSM_given_PRESS_state_should_change_to_RELEASE_state(void)
 
     buttonData.state = PRESS;
 
-    isButtonPressed_ExpectAndReturn(0);
+    readUserButton_ExpectAndReturn(0);
     buttonSM(&buttonData);
 
     TEST_ASSERT_EQUAL(buttonData.state, RELEASE);
