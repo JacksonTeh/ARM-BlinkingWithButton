@@ -3,6 +3,9 @@
 #include "Message.h"
 #include "Button.h"
 
+/*
+ *  Initialize data
+ */
 void buttonInitData(ButtonData *data)
 {
     data->state = RELEASE;
